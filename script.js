@@ -1,15 +1,26 @@
-//Get Quote From API
-async function getQuote() {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com';
-    const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json; ;
-    try {
-        const response = await fetch(proxyUrl + apiUrl);
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        getQuote();
-        console.log('hoooppa, no quote', error);
-    }
+// let apiQuotes = [];
+
+// show new quote
+function newQuote(){
+    //vyber si random quote z apiquotes array
+    const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
+    console.log(quote);
 }
-// On Load
-getQuote();
+
+//get Quote from api
+
+/* async function getQuote() {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const apiUrl = 'https://type.fit/api/quotes';
+    try {
+        const response = await fetch(apiUrl);
+        apiQuotes = await response.json();
+        newQuote();
+    } catch (error) {
+        // Catch error Here      
+    }
+} */
+
+// On load
+//getQuote();
+newQuote();
