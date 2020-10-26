@@ -3,12 +3,26 @@ const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const newQuoteBtn = document.getElementById('new-quote');
+const loader = document.getElementById('loader');
 
-// let apiQuotes = [];
+let apiQuotes = [];
+
+//show loading
+function loading(){
+    loader.hidden = false;
+    quoteContainer.hidden = true;
+}
+
+//Hide loading
+function complete (){
+    quoteContainer.hidden = false;
+    loader.hidden = true;
+}
 
 // show new quote
 
 function newQuote() {
+    loading();
     //vyber si random quote z apiquotes array
     const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
 
@@ -27,7 +41,9 @@ function newQuote() {
     } else {
         quoteText.classList.remove('long-quote');
     }
+    //Set Quote, hide loader
     quoteText.textContent = quote.text;
+    complete();
 }
 
 
@@ -35,6 +51,7 @@ function newQuote() {
 //get Quote from api
 
 /* async function getQuote() {
+    loading();
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const apiUrl = 'https://type.fit/api/quotes';
     try {
@@ -44,7 +61,7 @@ function newQuote() {
     } catch (error) {
         // Catch error Here      
     }
-} */
+}  */
 
 // Tweet quote - pouzivaj backtick pod escapom ``
 function tweetQuote() {
